@@ -13,7 +13,7 @@
 ## 프로젝트 구조
 
 ```
-toy_proj2/
+toy-advenced-rag/
 ├── main.py                 # Streamlit 앱 메인 파일
 ├── requirement.txt         # Python 의존성 패키지 목록
 ├── common/                 # 공통 모듈
@@ -51,8 +51,9 @@ toy_proj2/
 
 ```bash
 # 가상환경 생성 및 활성화
-conda create -p .toy python=3.10
-conda activate .toy
+# python 3.11 준비
+python -m venv .venv
+source .venv/bin/activate
 
 # 의존성 설치
 pip install -r requirement.txt
@@ -65,16 +66,15 @@ pip install -r requirement.txt
 ```
 OPENAI_API_KEY=your_openai_api_key
 TAVILY_API_KEY=your_tavily_api_key
-PROJECT_PATH=/Users/jisoo0130/proj/toy_proj2
+
+EMBEDDED_FILE_PATH=<프로젝트 경로>/data/embeded_docs.jsonl
+PROJECT_PATH=<프로젝트 경로>
+
+FAISS_INDEX_PATH=<프로젝트 경로>/data/faiss.index
+DOCUMENT_PATH=<프로젝트 경로>/data/embeded_docs_48306.860223916.jsonl
 ```
 
-### 3. 데이터 준비
-
-벡터 데이터베이스 파일이 `data/` 폴더에 있어야 합니다:
-- `embeded_docs_*.jsonl`: 임베딩된 문서 데이터
-- `faiss.index`: FAISS 벡터 인덱스
-
-### 4. 실행
+### 3. 실행
 
 ```bash
 streamlit run main.py
@@ -110,24 +110,3 @@ streamlit run main.py
 ### RAG Pipeline
 - LangGraph를 활용한 워크플로우 관리
 - 조건부 라우팅 및 상태 관리
-
-## 발표 자료
-
-이 프로젝트는 다음과 같은 발표 내용을 포함할 수 있습니다:
-
-1. **RAG 개념 소개**: 검색 증강 생성의 원리와 장점
-2. **시스템 아키텍처**: 그래프 기반 워크플로우 설명
-3. **기술 구현**: LangChain/LangGraph 활용 사례
-4. **품질 보장 메커니즘**: 환각 평가 및 재생성
-5. **실제 데모**: Streamlit 앱을 통한 실시간 데몬스트레이션
-
-## 향후 개선 방향
-
-- 멀티모달 지원 (이미지, 테이블 등)
-- 더 정교한 검색 알고리즘
-- 사용자 피드백 기반 학습
-- 확장 가능한 마이크로서비스 아키텍처
-
-## 라이선스
-
-이 프로젝트는 개인 학습 및 발표 목적으로 사용됩니다.
